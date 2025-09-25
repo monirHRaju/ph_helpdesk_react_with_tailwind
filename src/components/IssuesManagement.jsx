@@ -5,21 +5,30 @@ import CountBox from './CountBox';
 import Card from './Card';
 
 const IssuesManagement = ({issuePromise}) => {
-    const issueData = use(issuePromise)
+    const initialData = use(issuePromise)
+
+    const [data, setData] = useState(initialData)
     // console.log(issueData)
     const [toggleStatus, setToggleStatus] = useState('All')
+
+    const filteredData = toggleStatus == "All"
+        ? data
+        : data.filter(ele => ele.status == toggleStatus
+        )
+    
+    console.log(toggleStatus, filteredData)
     return (
         <div>
             {/* Box */}
-            <CountBox issueData={issueData}/> 
+            <CountBox data={data}/> 
 
             {/* toggle buttons */}
             <ToggleBtns toggleStatus={toggleStatus} setToggleStatus={setToggleStatus}></ToggleBtns>
 
             <Container>
-                 <div className='grid grid-cols-3 gap-4'>
+                 <div className='grid grid-cols-3 gap-4 mb-[50px]'>
                 {
-                    issueData.map((issue, index) => {
+                    filteredData.map((issue, index) => {
                         return <Card issue={issue} key={index}></Card>
                     })
                 }

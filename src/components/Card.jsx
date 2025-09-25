@@ -8,8 +8,35 @@ const Card = ({issue}) => {
                     <div className='flex gap-3'>
                         <h1 className='text-2xl font-bold'>{issue.subject }</h1>
                         <div className='flex gap-3'>
-                            <button className='p-2 font-semibold rounded-md bg-green-200 text-green-500 cursor-pointer'>{issue.priority}</button>
-                            <button className='p-2 font-semibold rounded-md bg-red-200 text-red-500 cursor-pointer'>{issue.status}</button>
+                             
+                            <button 
+                            className={`p-2 font-semibold rounded-md 
+                            cursor-pointer 
+                            ${
+                                issue.priority == "Low" 
+                                ? "text-red-500 bg-red-200" 
+                                : issue.priority == "Medium"
+                                ? "text-yellow-500 bg-yellow-200" 
+                                : "text-green-500 bg-green-200" 
+                            }`}
+                            
+                            >
+                                {issue.priority}
+                            </button>
+                            <button 
+                            className={`p-2 font-semibold rounded-md 
+                            cursor-pointer 
+                            ${
+                                issue.status == "Pending" 
+                                ? "text-red-500 bg-red-200" 
+                                : issue.status == "Submitted"
+                                ? "text-yellow-500 bg-yellow-200" 
+                                : "text-green-500 bg-green-200" 
+                            }`}
+                            
+                            >
+                                {issue.status}
+                            </button>
                         </div>
                     </div>
                     <p>{issue.description}</p>

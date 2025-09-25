@@ -1,12 +1,12 @@
 import React from 'react';
 import Container from './Container';
 
-const CountBox = ({issueData}) => {
-    const pendingData = issueData.filter(ele => ele.status == "Pending")
-    const submittedData = issueData.filter(ele => ele.status == "Submitted")
-    const reviewedData = issueData.filter(ele => ele.status == "Reviewed")
+const CountBox = ({data}) => {
+    const pendingData = data.filter(ele => ele.status == "Pending")
+    const submittedData = data.filter(ele => ele.status == "Submitted")
+    const reviewedData = data.filter(ele => ele.status == "Reviewed")
 
-    console.log([pendingData, submittedData, reviewedData])
+    // console.log([pendingData, submittedData, reviewedData])
     return (
          <Container>
                 <div className='grid grid-cols-3 gap-5'>
