@@ -1,24 +1,29 @@
 import React from 'react';
 import Container from './Container';
 
-const CountBox = () => {
+const CountBox = ({issueData}) => {
+    const pendingData = issueData.filter(ele => ele.status == "Pending")
+    const submittedData = issueData.filter(ele => ele.status == "Submitted")
+    const reviewedData = issueData.filter(ele => ele.status == "Reviewed")
+
+    console.log([pendingData, submittedData, reviewedData])
     return (
          <Container>
                 <div className='grid grid-cols-3 gap-5'>
                 
                 <div className='flex flex-col items-center justify-center bg-gray-500 h-[250px] text-white rounded-lg p-7 text-center my-[80px]'>
                     <h2 className='text-4xl font-bold'>Pending</h2>
-                    <p className='text-4xl font-semibold'>0</p>
+                    <p className='text-4xl font-semibold'>{pendingData.length}</p>
                 </div>
                 
                 <div className='flex flex-col items-center justify-center bg-purple-500 h-[250px] text-white rounded-lg p-7 text-center my-[80px]'>
                     <h2 className='text-4xl font-bold'>Submitted</h2>
-                    <p className='text-4xl font-semibold'>0</p>
+                    <p className='text-4xl font-semibold'>{submittedData.length}</p>
                 </div>
                 
                 <div className='flex flex-col items-center justify-center bg-teal-500 h-[250px] text-white rounded-lg p-7 text-center my-[80px]'>
                     <h2 className='text-4xl font-bold'>Reviewed</h2>
-                    <p className='text-4xl font-semibold'>0</p>
+                    <p className='text-4xl font-semibold'>{reviewedData.length}</p>
                 </div>
                 
                 </div>

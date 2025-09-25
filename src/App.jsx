@@ -1,16 +1,23 @@
 import './App.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Container from './components/Container'
-import ToggleBtns from './components/ToggleBtns'
 import IssuesManagement from './components/IssuesManagement'
+import { Suspense } from 'react'
+
+const issueFetch = async () => {
+    const result = await fetch('/data.json')
+    return result.json()
+  }
 function App() {
+  const issuePromise = issueFetch();
   
-  // console.log(toggleStatus)
+
   return (
     <>
       <Navbar></Navbar>
-      <IssuesManagement></IssuesManagement>
+      <Suspense>
+        <IssuesManagement issuePromise={issuePromise}></IssuesManagement>
+      </Suspense>
       {/* Footer Section */}
       <Footer></Footer>
     </>
