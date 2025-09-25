@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import IssuesManagement from './components/IssuesManagement'
 import { Suspense } from 'react'
+import Loading from './components/Loading'
 
 const issueFetch = async () => {
     const result = await fetch('/data.json')
@@ -15,7 +16,7 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
-      <Suspense>
+      <Suspense fallback={<Loading></Loading>}>
         <IssuesManagement issuePromise={issuePromise}></IssuesManagement>
       </Suspense>
       {/* Footer Section */}

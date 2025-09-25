@@ -6,11 +6,11 @@ const ToggleBtns = ({toggleStatus, setToggleStatus}) => {
     return (
         
             <Container>
-            <div className='text-right'>
+            <div className='text-center md:text-right'>
                 {
                     btns.map((btn, index) => {
                         return <button 
-                                className={`toggle-btn 
+                                className={`my-8 toggle-btn 
                                     ${index == 0 && 'rounded-l-lg'}
                                     ${index == btns.length - 1  && 'rounded-r-lg'}
                                     ${toggleStatus == btn && '!bg-purple-500 !text-white'}`} 

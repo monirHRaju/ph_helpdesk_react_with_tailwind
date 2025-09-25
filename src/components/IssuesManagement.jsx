@@ -29,7 +29,7 @@ const IssuesManagement = ({issuePromise}) => {
                 {
                     filteredData.length == 0 
                     ? <h2 className='mb-[50px] text-2xl font-bold text-center text-purple-500'>No Data Found</h2>
-                    : <div className='grid grid-cols-3 gap-4 mb-[50px]'>
+                    : <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 mb-[50px] p-2 md:p-0'>
                         {
                             filteredData.map((issue, index) => {
                                 return <Card issue={issue} key={index} data={data} setData={setData}></Card>
