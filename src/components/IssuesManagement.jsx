@@ -16,7 +16,7 @@ const IssuesManagement = ({issuePromise}) => {
         : data.filter(ele => ele.status == toggleStatus
         )
     
-    console.log(toggleStatus, filteredData)
+    // console.log(toggleStatus, filteredData)
     return (
         <div>
             {/* Box */}
@@ -26,13 +26,17 @@ const IssuesManagement = ({issuePromise}) => {
             <ToggleBtns toggleStatus={toggleStatus} setToggleStatus={setToggleStatus}></ToggleBtns>
 
             <Container>
-                 <div className='grid grid-cols-3 gap-4 mb-[50px]'>
                 {
-                    filteredData.map((issue, index) => {
-                        return <Card issue={issue} key={index}></Card>
-                    })
+                    filteredData.length == 0 
+                    ? <h2 className='mb-[50px] text-2xl font-bold text-center text-purple-500'>No Data Found</h2>
+                    : <div className='grid grid-cols-3 gap-4 mb-[50px]'>
+                        {
+                            filteredData.map((issue, index) => {
+                                return <Card issue={issue} key={index} data={data} setData={setData}></Card>
+                            })
+                        }
+                    </div>
                 }
-                </div>
             </Container>
 
         </div>
